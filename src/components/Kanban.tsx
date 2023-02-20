@@ -1,10 +1,12 @@
 import { useState } from "react";
 import Board from './Board';
 import $ from 'jquery';
+import { Button } from '@material-ui/core';
 
 const Kanban = () => {
     type Todo = { id: number; text: string; state: string };
     const [todos,setTodos] = useState<Todo[]>([]);
+
     const boardTypes = ['plan', 'ing', 'done'];
 
     const textareaHandle = {
@@ -26,7 +28,7 @@ const Kanban = () => {
         $(`#textArea${targetNum}`).prop('disabled', true); 
         $(`#btn${targetNum}`).removeClass('showOn').addClass('showOff');
 
-        setTodos(todos.map((todo:any) => todo.id === targetNum ?
+        setTodos(todos.map((todo:any) => todo.id == targetNum ?
             {
                 ...todo,
                 text: targetText
@@ -53,7 +55,7 @@ const Kanban = () => {
 
     const moveCard = (type:string, id:number) => {
         console.log(`이동한 타켓 ${type}`);
-        setTodos(todos.map((todo:any) => todo.id === id ?
+        setTodos(todos.map((todo:any) => todo.id == id ?
             {
                 ...todo,
                 state:type
@@ -68,7 +70,7 @@ const Kanban = () => {
         <div className="container">
             <div>
                 <h3>Kanban 연습</h3>
-                <button onClick={addCard}>추가</button>
+                <Button variant="contained" color="primary" onClick={addCard}>추가</Button>
             </div>
 
             {

@@ -1,4 +1,6 @@
 import { useDrag } from 'react-dnd';
+import { Button } from '@material-ui/core';
+
 
 const Card = ({textareaHandle, buttonHandleOnClick, id, text}:any) => {
     const [, drag] = useDrag(()=>({
@@ -14,7 +16,7 @@ const Card = ({textareaHandle, buttonHandleOnClick, id, text}:any) => {
                 disabled
                 defaultValue={text}
             ></textarea>
-            <button id={`btn${id}`} className='showOff' onClick={buttonHandleOnClick}>확인</button>
+            <Button variant="contained" color="primary" id={`btn${id}`} className='showOff' onClick={buttonHandleOnClick}>확인</Button>
         </div>
     )
 }
