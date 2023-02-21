@@ -1,23 +1,33 @@
 import { useState } from "react";
 import { Button } from '@material-ui/core';
-import ModalComponent from './ModalComponent';
+import CustomModal from './Modal/CustomModal';
+import CustomAlert from './Modal/CustomAlert';
 import Kanban from './Kanban';
 
 
 
 const ModalTest = () => {
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    const [openModal, setOpenModal] = useState(false);
+    const handleOpenModal = () => setOpenModal(true);
+    const handleCloseModal = () => setOpenModal(false);
+
+    const [openAlert, setOpenAlert] = useState(false);
+    const handleOpenAlert = () => setOpenAlert(true);
+    const handleCloseAlert = () => setOpenAlert(false);
 
 
     return (
         <div className="container">
-            <h3>TEST</h3>
-            <Button onClick={handleOpen} variant="contained" color="primary">
+            <Button onClick={handleOpenModal} variant="contained" color="primary">
                 칸반 모달
             </Button>
-            <ModalComponent open={open} handleClose={handleClose} modalContent={<Kanban/>} width='60%' height='70%' message=''/>
+            <Button onClick={handleOpenAlert} variant="contained" color="primary">
+                경고 모달
+            </Button>
+            <CustomAlert open={openAlert} onClose={handleCloseAlert} message='경고창 테스트'/>
+            <CustomModal open={openModal} onClose={handleCloseModal} width='80%'>
+                <Kanban/>
+            </CustomModal>
         </div>
     )
 }

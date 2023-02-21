@@ -34,7 +34,6 @@ const ModalComponent = ({ open, handleClose, modalContent, width, height, messag
   const classes = useStyles({ styleMap });
 
 
-
   return (
     <div>
       <Modal
